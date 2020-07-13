@@ -1,10 +1,15 @@
 package com.codecool.videoservice;
 
+import com.codecool.videoservice.entity.Video;
+import com.codecool.videoservice.repository.VideoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -12,10 +17,15 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.Arrays;
+
 @SpringBootApplication
 @EnableSwagger2
 @EnableEurekaClient
 public class VideoServiceApplication {
+
+    @Autowired
+    VideoRepository videoRepository;
 
     public static void main(String[] args) {
         SpringApplication.run(VideoServiceApplication.class, args);
@@ -35,6 +45,28 @@ public class VideoServiceApplication {
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
+
+    @Bean
+    public CommandLineRunner init() {
+        return args -> {
+
+            Video video1 = Video.builder()
+                    .name("Daft Punk- Veridis Quo Extended/Loop")
+                    .url("https://www.youtube.com/watch?v=Q-oU-iqBZGc")
+                    .build();
+            Video video2 = Video.builder()
+                    .name("Daft Punk Feat Pharrel Williams - Get Lucky (Album Version Video)")
+                    .url("https://www.youtube.com/watch?v=XkeIwhKIi84")
+                    .build();
+            Video video3 = Video.builder()
+                    .name("Daft Punk ft. Julian Casablancas - Instant Crush (Official Video)")
+                    .url("https://www.youtube.com/watch?v=a5uQMwRMHcs")
+                    .build();
+
+            videoRepository.saveAll(Arrays.asList(video1, video2, video3));
+
+        };
+    };
 
 
 }
