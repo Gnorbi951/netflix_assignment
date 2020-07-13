@@ -47,7 +47,7 @@ public class ApiGatewayApplication {
             List<SwaggerResource> resources = new ArrayList<>();
             zuulProperties.getRoutes().values().stream()
                     .forEach(route -> resources
-                            .add(createResource(route.getServiceId(), route.getServiceId(), "versilel")));
+                            .add(createResource(route.getServiceId(), route.getServiceId(), "version1")));
             return resources;
         };
     }
