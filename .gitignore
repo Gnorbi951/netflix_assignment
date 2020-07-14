@@ -2,3 +2,25 @@
 *.iws
 *.iml
 *.ipr
+
+# dependencies
+/netflix_frontend/node_modules
+/netflix_frontend/.pnp
+/netflix_frontend.pnp.js
+
+# testing
+/netflix_frontend/coverage
+
+# production
+/netflix_frontend/build
+
+# misc
+/netflix_frontend/.DS_Store
+/netflix_frontend/.env.local
+/netflix_frontend/.env.development.local
+/netflix_frontend/.env.test.local
+/netflix_frontend/.env.production.local
+
+/netflix_frontendnpm-debug.log*
+/netflix_frontend/yarn-debug.log*
+/netflix_frontend/yarn-error.log*
