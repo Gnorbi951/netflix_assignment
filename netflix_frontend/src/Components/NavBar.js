@@ -10,10 +10,6 @@ const NavBar = () => {
     };
     window.addEventListener("scroll", getScrollY);
 
-    const checkIfAdmin = () => {
-        return !!(localStorage.getItem("roles") && localStorage.getItem("roles").includes("ADMIN"));
-    }
-
     return (
         <div
             style={{
@@ -57,44 +53,6 @@ const NavBarHeaderOpacity = styled.header`
   margin: 0;
   opacity: 0.8;
   transition: opacity 4s linear;
-`;
-
-const Username = styled.div`
-   margin: 0.2rem 1rem;
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  &:hover {
-    transition: 350ms;
-    color: #a9a9a9;
-    text-decoration: none;
-  }
-  font-size: 1.5rem;
-`
-
-const AdminName = styled(Link)`
-     margin: 0.2rem 1rem;
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  &:hover {
-    transition: 350ms;
-    color: #a9a9a9;
-    text-decoration: none;
-  }
-  font-size: 1.5rem;
-`
-const LoginIcon = styled(Link)`
-  font-size: 1.8rem;
-  color: #ffffff;
-  margin-left: auto;
-  &:hover {
-    transition: 350ms;
-    color: #a9a9a9;
-    text-decoration: none;
-  }
 `;
 
 const MyLink = styled(Link)`
