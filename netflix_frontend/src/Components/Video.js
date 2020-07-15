@@ -29,7 +29,7 @@ const Video = (props) => {
 }
 
 const StyledLink = styled(Link)`
-    font-size: 2rem
+    font-size: 1.5rem
 `;
 
 export default Video;
