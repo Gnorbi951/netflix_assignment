@@ -4,9 +4,12 @@ const MainPage = () => {
 
 
     return (
+        <React.Fragment>
         <div>
-            Hai
+            Some things that the app will display
+
         </div>
+        </React.Fragment>
     );
 }
 

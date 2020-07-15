@@ -11,25 +11,12 @@ const NavBar = () => {
     window.addEventListener("scroll", getScrollY);
 
     return (
-        <div
-            style={{
-                position: "fixed",
-                top: "0px",
-                zIndex: "1",
-            }}
-        >
-            {scrollY > 50 ? (
-                <NavBarHeaderOpacity>
-                    <MyLink to={"/"}>Home</MyLink>
-                    <MyLink to={"/"}>Idk yet</MyLink>
-                </NavBarHeaderOpacity>
-            ) : (
-                <NavBarHeader>
-                    <MyLink to={"/"}>Home</MyLink>
-                    <MyLink to={"/"}>Idk yet</MyLink>
-                </NavBarHeader>
-            )}
-        </div>
+        <React.Fragment>
+            <NavBarHeader>
+                <MyLink to={"/"}>Home</MyLink>
+                <MyLink to={"/"}>Idk yet</MyLink>
+            </NavBarHeader>
+        </React.Fragment>
     );
 };
 
