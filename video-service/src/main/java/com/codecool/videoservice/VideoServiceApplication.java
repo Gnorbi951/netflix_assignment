@@ -40,11 +40,11 @@ public class VideoServiceApplication {
                 .build();
     }
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+//    @Bean
+//    @LoadBalanced
+//    public RestTemplate restTemplate() {
+//        return new RestTemplate();
+//    }
 
     @Bean
     public CommandLineRunner init() {

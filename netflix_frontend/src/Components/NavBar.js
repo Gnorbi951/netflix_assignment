@@ -14,7 +14,6 @@ const NavBar = () => {
         <React.Fragment>
             <NavBarHeader>
                 <MyLink to={"/"}>Home</MyLink>
-                <MyLink to={"/"}>Idk yet</MyLink>
             </NavBarHeader>
         </React.Fragment>
     );
