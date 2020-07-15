@@ -1,12 +1,14 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import styled from "styled-components";
 
 const Video = (props) => {
     return (
         <React.Fragment>
             <div className="card-columns">
             {props.videos.map((video) =>
-                <div class="card">
-                    <div class="card-img-top">
+                <div className="card">
+                    <div className="card-img-top">
                         <iframe width={"100%"}
                                 height={"100%"}
                                 frameBorder={0}
@@ -16,7 +18,7 @@ const Video = (props) => {
                             src={`https://youtube.com/embed/${video.viewKey}`} />
                     </div>
                     <div className="card-body">
-                        <h2 key={video.id}>{video.name}</h2>
+                        <StyledLink to={"/video/"+video.id}>{video.name}</StyledLink>
                     </div>
                 </div>
 
@@ -25,5 +27,9 @@ const Video = (props) => {
         </React.Fragment>
     );
 }
+
+const StyledLink = styled(Link)`
+    font-size: 2rem
+`;
 
 export default Video;

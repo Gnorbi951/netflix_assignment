@@ -62,8 +62,13 @@ public class VideoServiceApplication {
                     .name("Daft Punk ft. Julian Casablancas - Instant Crush (Official Video)")
                     .viewKey("a5uQMwRMHcs")
                     .build();
+            Video video4 = Video.builder()
+                    .name("Gyóntatófülke - Koronavírust megelőző csoronita mix")
+                    .viewKey("MEW6n2vz1qw")
+                    .build();
 
-            videoRepository.saveAll(Arrays.asList(video1, video2, video3));
+
+            videoRepository.saveAll(Arrays.asList(video1, video2, video3, video4));
 
         };
     };
