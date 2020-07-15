@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import axios from "axios";
+import Video from "./Video";
 
 const MainPage = () => {
 
@@ -8,13 +9,13 @@ const MainPage = () => {
 
     useEffect(() => {
         axios.get("http://localhost:8762/videoservice/video-controller/all")
-            .then(response => console.log(response));
+            .then(response => setVideo(response.data));
     }, [])
 
     return (
         <React.Fragment>
         <MainPageHead>
-            Some things that the app will display
+            {video ? <Video videos={video}/> : <p>Loading</p>}
         </MainPageHead>
         <div>
 

@@ -1,11 +1,15 @@
 import React from "react";
 
-const Video = () => {
-
+const Video = (props) => {
     return (
         <React.Fragment>
-            Bideo
+            <div className="card-columns">
+            {props.videos.map((video) =>
 
+                <h2 key={video.id}>{video.name}</h2>
+
+            )}
+            </div>
         </React.Fragment>
     );
 }

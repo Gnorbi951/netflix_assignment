@@ -3,12 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-    const [scrollY, setScrollY] = React.useState(window.pageYOffset);
-
-    const getScrollY = () => {
-        setScrollY(window.pageYOffset);
-    };
-    window.addEventListener("scroll", getScrollY);
 
     return (
         <React.Fragment>
