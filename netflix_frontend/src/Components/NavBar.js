@@ -29,19 +29,6 @@ const NavBarHeader = styled.header`
   /* justify-content: flex-begin; */
   margin: 0;
 `;
-
-const NavBarHeaderOpacity = styled.header`
-  padding: 1rem;
-  background-color: #2b2b2b;
-  display: flex;
-  width: 99.9vw;
-  flex-direction: row;
-  /* justify-content: flex-begin; */
-  margin: 0;
-  opacity: 0.8;
-  transition: opacity 4s linear;
-`;
-
 const MyLink = styled(Link)`
   margin: 0.2rem 1rem;
   color: #ffffff;
