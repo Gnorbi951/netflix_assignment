@@ -52,15 +52,15 @@ public class VideoServiceApplication {
 
             Video video1 = Video.builder()
                     .name("Daft Punk- Veridis Quo Extended/Loop")
-                    .url("https://www.youtube.com/watch?v=Q-oU-iqBZGc")
+                    .viewKey("Q-oU-iqBZGc")
                     .build();
             Video video2 = Video.builder()
                     .name("Daft Punk Feat Pharrel Williams - Get Lucky (Album Version Video)")
-                    .url("https://www.youtube.com/watch?v=XkeIwhKIi84")
+                    .viewKey("XkeIwhKIi84")
                     .build();
             Video video3 = Video.builder()
                     .name("Daft Punk ft. Julian Casablancas - Instant Crush (Official Video)")
-                    .url("https://www.youtube.com/watch?v=a5uQMwRMHcs")
+                    .viewKey("a5uQMwRMHcs")
                     .build();
 
             videoRepository.saveAll(Arrays.asList(video1, video2, video3));
