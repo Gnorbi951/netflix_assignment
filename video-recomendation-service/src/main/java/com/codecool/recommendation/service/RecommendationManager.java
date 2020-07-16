@@ -21,12 +21,8 @@ public class RecommendationManager {
 
     public List<Recommendation> findByVideoId(Long id) {
 
-        Optional<Recommendation> foundElements = recommendationRepository.findById(id);
-
-        List<Recommendation> result = new ArrayList<>();
-        foundElements.ifPresent(result::add);
-
-        return result;
+        List<Recommendation> foundElements = recommendationRepository.findEveryElementByVideoId(id);
+        return foundElements;
 
     }
 
