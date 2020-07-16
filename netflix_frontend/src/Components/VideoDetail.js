@@ -10,14 +10,17 @@ const VideoDetail = (props) => {
     useEffect(() => {
         axios.get(`http://localhost:8762/videoservice/video-controller/video/${props.match.params.id}`)
             .then(response => {
-                console.log(response)
                 setVideo(response)});
 
 
         axios.get(`http://localhost:8762/videoservice/video-controller/video-with-recommendations/${props.match.params.id}`)
             .then(response => {
-                setDetails(response)
-                console.log(response.data);
+                if (response.data.length === 0) {
+                    setDetails(null);
+                } else {
+                    setDetails(response);
+                }
+
             });
     }, [props] );
     return (
