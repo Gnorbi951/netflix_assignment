@@ -21,7 +21,7 @@ public class RecommendationController {
 
     @PostMapping("/add-new-recommendation")
     public boolean addRecommendation(@ModelAttribute Recommendation recommendation) {
-        System.out.println("steps in");
+        System.out.println(recommendation);
         return recommendationManager.saveRecommendation(recommendation);
     }
 }

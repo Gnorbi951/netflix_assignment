@@ -38,7 +38,7 @@ const VideoDetail = (props) => {
                              : <h1>Loading</h1>}
             </VideoContainer>
             {details ? <Recommendation recommendations={details} /> : <h2>No Recommendations</h2>}
-            <form action={"http://localhost:8762/video-controller/add-recommendation"} method={"POST"}>
+            <form action={"http://localhost:8762/videoservice/video-controller/add-recommendation"} method={"POST"}>
                 <input name={"comment"} placeholder={"Your comment"} /><br/>
                 <select name="rating">
                     <option value="1">1</option>
@@ -47,7 +47,8 @@ const VideoDetail = (props) => {
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select><br/>
-                {video ? <input type={"hidden"} name={"videoId"} value={video.id} /> : null}
+                <input type={"hidden"} name={"videoId"} value={props.match.params.id} />
+                <input type={"hidden"} name={"id"} value={1} />
                 <StyledButton type={"submit"} >Submit</StyledButton>
             </form>
         </React.Fragment>

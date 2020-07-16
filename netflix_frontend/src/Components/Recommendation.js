@@ -8,7 +8,7 @@ const Recommendation = (props) => {
             {props.recommendations.data.map((detail) => (
                 <div key={detail.id}>
                     <p>{detail.comment}</p>
-                    <p>Rating: {detail.rating}/10</p>
+                    <p>Rating: {detail.rating}/5</p>
                 </div>
             ))}
         </React.Fragment>

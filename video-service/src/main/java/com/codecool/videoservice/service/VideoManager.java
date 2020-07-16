@@ -77,7 +77,7 @@ public class VideoManager {
         params.add(new BasicNameValuePair("id", recommendation.getId().toString()));
         params.add(new BasicNameValuePair("comment", recommendation.getComment()));
         params.add(new BasicNameValuePair("rating", Integer.toString(recommendation.getRating())));
-        params.add(new BasicNameValuePair("rating", recommendation.getVideoId().toString()));
+        params.add(new BasicNameValuePair("videoId", recommendation.getVideoId().toString()));
         httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
 
         //Execute
