@@ -27,7 +27,12 @@ public class RecommendationManager {
 
     public boolean saveRecommendation(Recommendation recommendation) {
         try {
-            recommendationRepository.save(recommendation);
+            Recommendation build = Recommendation.builder()
+                    .rating(recommendation.getRating())
+                    .comment(recommendation.getComment())
+                    .videoId(recommendation.getVideoId())
+                    .build();
+            recommendationRepository.save(build);
         } catch (Exception e) {
             return false;
         }
