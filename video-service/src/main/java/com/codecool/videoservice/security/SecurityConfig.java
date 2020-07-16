@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/videoservice/video-controller/all"
+                .antMatchers("/videoservice/video-controller/**"
                         ).permitAll();
     }
 

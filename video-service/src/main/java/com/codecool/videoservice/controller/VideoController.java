@@ -27,7 +27,6 @@ public class VideoController {
 
     @GetMapping("/video/{id}")
     public HashMap<Video, List<Recommendation>> getVideoWithRecommendations(@PathVariable("id") Long id) throws IOException {
-
         return videoManager.findVideoWithRecommendations(id);
     }
 }
