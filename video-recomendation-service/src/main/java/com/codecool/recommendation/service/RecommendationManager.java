@@ -5,7 +5,9 @@ import com.codecool.recommendation.repository.RecommendationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecommendationManager {
@@ -15,6 +17,17 @@ public class RecommendationManager {
 
     public List<Recommendation> getAll() {
         return recommendationRepository.findAll();
+    }
+
+    public List<Recommendation> findByVideoId(Long id) {
+
+        Optional<Recommendation> foundElements = recommendationRepository.findById(id);
+
+        List<Recommendation> result = new ArrayList<>();
+        foundElements.ifPresent(result::add);
+
+        return result;
+
     }
 
 }

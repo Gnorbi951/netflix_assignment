@@ -4,6 +4,7 @@ import com.codecool.recommendation.entity.Recommendation;
 import com.codecool.recommendation.service.RecommendationManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,8 @@ public class RecommendationController {
     @Autowired
     private RecommendationManager recommendationManager;
 
-    @GetMapping("/all")
-    public List<Recommendation> getAll() {
-        return recommendationManager.getAll();
+    @GetMapping("/find-by-id/{id}")
+    public List<Recommendation> getAll(@PathVariable("id") Long id) {
+        return recommendationManager.findByVideoId(id);
     }
 }
