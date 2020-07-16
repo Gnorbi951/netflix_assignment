@@ -25,4 +25,12 @@ public class RecommendationManager {
 
     }
 
+    public boolean saveRecommendation(Recommendation recommendation) {
+        try {
+            recommendationRepository.save(recommendation);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
 }

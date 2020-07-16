@@ -33,8 +33,9 @@ public class VideoController {
     }
 
     @PostMapping("/add-recommendation")
-    public String addRecommendation(@ModelAttribute Recommendation recommendation) {
+    public String addRecommendation(@ModelAttribute Recommendation recommendation) throws IOException {
         System.out.println(recommendation.toString());
-        return "lol";
+        videoManager.sendPostToRecommendationService(recommendation);
+        return "Successfully saved";
     }
 }

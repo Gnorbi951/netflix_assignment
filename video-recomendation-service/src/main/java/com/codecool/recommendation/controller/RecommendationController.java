@@ -3,10 +3,7 @@ package com.codecool.recommendation.controller;
 import com.codecool.recommendation.entity.Recommendation;
 import com.codecool.recommendation.service.RecommendationManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +17,11 @@ public class RecommendationController {
     @GetMapping("/find-by-id/{id}")
     public List<Recommendation> getAll(@PathVariable("id") Long id) {
         return recommendationManager.findByVideoId(id);
+    }
+
+    @PostMapping("/add-new-recommendation")
+    public boolean addRecommendation(@ModelAttribute Recommendation recommendation) {
+        System.out.println("steps in");
+        return recommendationManager.saveRecommendation(recommendation);
     }
 }
