@@ -22,7 +22,7 @@ const VideoDetail = (props) => {
                 }
 
             });
-    }, [props] );
+    }, [props]);
     return (
 
         <React.Fragment>
@@ -38,7 +38,18 @@ const VideoDetail = (props) => {
                              : <h1>Loading</h1>}
             </VideoContainer>
             {details ? <Recommendation recommendations={details} /> : <h2>No Recommendations</h2>}
-        {}</React.Fragment>
+            <form action={"http://localhost:8762/videoservice/video-controller/..."} method={"POST"}>
+                <input name={"comment"} placeholder={"Your comment"} /><br/>
+                <select name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select><br/>
+                <StyledButton type={"submit"} >Submit</StyledButton>
+            </form>
+        </React.Fragment>
 
     );
 
@@ -48,6 +59,15 @@ const VideoContainer = styled.div`
     height: 30rem;
     padding: 5px;
 `;
+
+const StyledButton = styled.button`
+
+    width:4rem;
+    height:2rem;
+    border-radius:5px;
+    
+`;
+
 
 
 export default VideoDetail;
