@@ -37,9 +37,11 @@ public class VideoManager {
         HashMap<Video, List<Recommendation>> result = new HashMap<>();
 
         Video foundVideo = videoRepository.findById(id).orElse(null);
+        // Kill any type of bad requests here
         if (foundVideo == null) return null;
 
         ObjectMapper mapper = new ObjectMapper();
+        //TODO: Calling 8081 is NOT Scalable! This NEEDS to be fixed 
         List<Recommendation> recommendations = mapper.readValue(new URL("http://localhost:8081/recommendation-service/find-by-id/" + id),
                 List.class);
         if (recommendations.size() == 0) recommendations = null;
