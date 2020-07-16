@@ -16,7 +16,7 @@ const VideoDetail = (props) => {
                 setDetails(response)
                 console.log(response.data);
             });
-    }, []);
+    }, [props] );
     return (
 
         <React.Fragment>
