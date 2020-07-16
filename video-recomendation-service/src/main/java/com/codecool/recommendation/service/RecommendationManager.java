@@ -21,8 +21,7 @@ public class RecommendationManager {
 
     public List<Recommendation> findByVideoId(Long id) {
 
-        List<Recommendation> foundElements = recommendationRepository.findEveryElementByVideoId(id);
-        return foundElements;
+        return recommendationRepository.findEveryElementByVideoId(id);
 
     }
 

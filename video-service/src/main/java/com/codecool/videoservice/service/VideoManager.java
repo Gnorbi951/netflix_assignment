@@ -39,27 +39,10 @@ public class VideoManager {
         Video foundVideo = videoRepository.findById(id).orElse(null);
         if (foundVideo == null) return null;
 
-//        // Open connection
-//        URL url = new URL("http://localhost:8081/recommendation-service/find-by-id/" + id);
-//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//        con.setRequestMethod("GET");
-//        con.setRequestProperty("Content-Type", "application/json");
-//        BufferedReader in = new BufferedReader(
-//                new InputStreamReader(con.getInputStream()));
-//        String inputLine;
-//        // Get the content
-//        StringBuffer content = new StringBuffer();
-//        while ((inputLine = in.readLine()) != null) {
-//            content.append(inputLine);
-//        }
-//        in.close();
-//        JSONObject jsonObject;
-//        jsonObject = new JSONObject(Collections.singletonList(content));
-//
         ObjectMapper mapper = new ObjectMapper();
         List<Recommendation> recommendations = mapper.readValue(new URL("http://localhost:8081/recommendation-service/find-by-id/" + id),
                 List.class);
-
+        if (recommendations.size() == 0) recommendations = null;
 
         result.put(foundVideo, recommendations);
 
