@@ -25,8 +25,13 @@ public class VideoController {
         return videoManager.retrieveAllVideos();
     }
 
-    @GetMapping("/video/{id}")
-    public HashMap<Video, List<Recommendation>> getVideoWithRecommendations(@PathVariable("id") Long id) throws IOException {
+    @GetMapping("/video-with-recommendations/{id}")
+    public HashMap<String, List<Recommendation>> getVideoWithRecommendations(@PathVariable("id") Long id) throws IOException {
         return videoManager.findVideoWithRecommendations(id);
+    }
+
+    @GetMapping("/video/{id}")
+    public Video getVideo(@PathVariable("id") Long id) {
+        return videoManager.findVideoById(id);
     }
 }

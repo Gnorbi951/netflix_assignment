@@ -33,10 +33,10 @@ public class VideoManager {
         return videoRepository.findAll();
     }
 
-    public HashMap<Video, List<Recommendation>> findVideoWithRecommendations(Long id) throws IOException {
-        HashMap<Video, List<Recommendation>> result = new HashMap<>();
+    public HashMap<String, List<Recommendation>> findVideoWithRecommendations(Long id) throws IOException {
+        HashMap<String, List<Recommendation>> result = new HashMap<>();
 
-        Video foundVideo = videoRepository.findById(id).orElse(null);
+        Video foundVideo = findVideoById(id);
         // Kill any type of bad requests here
         if (foundVideo == null) return null;
 
@@ -46,9 +46,13 @@ public class VideoManager {
                 List.class);
         if (recommendations.size() == 0) recommendations = null;
 
-        result.put(foundVideo, recommendations);
+        result.put(id.toString(), recommendations);
 
         return result;
 
+    }
+
+    public Video findVideoById(Long id) {
+        return videoRepository.findById(id).orElse(null);
     }
 }
