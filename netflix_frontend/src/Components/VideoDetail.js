@@ -5,7 +5,7 @@ const VideoDetail = (props) => {
     const [details, setDetails] = useState();
 
     useEffect(() => {
-        axios.get(`http://localhost:8762/videoservice/video-controller/video/${props.match.params.id}`)
+        axios.get(`http://localhost:8762/videoservice/video-controller/video-with-recommendations/${props.match.params.id}`)
             .then(response => {
                 setDetails(response)
                 console.log(response.data);
