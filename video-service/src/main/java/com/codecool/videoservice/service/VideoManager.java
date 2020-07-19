@@ -61,8 +61,6 @@ public class VideoManager {
         // Kill any type of bad requests here
         if (foundVideo == null) return null;
 
-        ObjectMapper mapper = new ObjectMapper();
-        //TODO: Calling 8081 is NOT Scalable! This NEEDS to be fixed
         List<Recommendation> recommendations = restTemplate.getForEntity(baseUrl + "find-by-id/" + id, List.class).getBody();
         if (recommendations.size() == 0) recommendations = null;
 
