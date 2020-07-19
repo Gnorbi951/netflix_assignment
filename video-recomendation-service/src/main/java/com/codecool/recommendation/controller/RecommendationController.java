@@ -20,7 +20,7 @@ public class RecommendationController {
     }
 
     @PostMapping("/add-new-recommendation")
-    public boolean addRecommendation(@ModelAttribute Recommendation recommendation) {
+    public boolean addRecommendation(@RequestBody Recommendation recommendation) {
         System.out.println(recommendation);
         return recommendationManager.saveRecommendation(recommendation);
     }

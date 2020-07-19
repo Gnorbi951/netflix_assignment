@@ -21,7 +21,13 @@ import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
@@ -73,22 +79,25 @@ public class VideoManager {
     }
 
     public void sendPostToRecommendationService(Recommendation recommendation) throws IOException {
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        //TODO: Burned in port
-        HttpPost httppost = new HttpPost("http://localhost:8081/recommendation-service/add-new-recommendation");
-
-        // Request parameters and other properties.
-        List<NameValuePair> params = new ArrayList<NameValuePair>(2);
-        params.add(new BasicNameValuePair("id", recommendation.getId().toString()));
-        params.add(new BasicNameValuePair("comment", recommendation.getComment()));
-        params.add(new BasicNameValuePair("rating", Integer.toString(recommendation.getRating())));
-        params.add(new BasicNameValuePair("videoId", recommendation.getVideoId().toString()));
-        httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
-
-        //Execute
-        CloseableHttpResponse response = httpclient.execute(httppost);
-        HttpEntity entity = response.getEntity();
-        System.out.println(response.toString());
-        System.out.println(entity.toString());
+//        CloseableHttpClient httpclient = HttpClients.createDefault();
+//        //TODO: Burned in port
+//
+//        HttpPost httppost = new HttpPost("http://localhost:8081/recommendation-service/add-new-recommendation");
+//
+//        // Request parameters and other properties.
+//        List<NameValuePair> params = new ArrayList<NameValuePair>(2);
+//        params.add(new BasicNameValuePair("id", recommendation.getId().toString()));
+//        params.add(new BasicNameValuePair("comment", recommendation.getComment()));
+//        params.add(new BasicNameValuePair("rating", Integer.toString(recommendation.getRating())));
+//        params.add(new BasicNameValuePair("videoId", recommendation.getVideoId().toString()));
+//        httppost.setEntity(new UrlEncodedFormEntity(params, "UTF-8"));
+//
+//        //Execute
+//        CloseableHttpResponse response = httpclient.execute(httppost);
+//        HttpEntity entity = response.getEntity();
+//        System.out.println(response.toString());
+//        System.out.println(entity.toString());
+        
+        restTemplate.postForEntity(baseUrl + "add-new-recommendation", recommendation, Recommendation.class);
     }
 }
