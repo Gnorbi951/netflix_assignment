@@ -6,6 +6,7 @@ import com.codecool.videoservice.entity.Video;
 import com.codecool.videoservice.repository.VideoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -19,7 +20,9 @@ import org.apache.http.protocol.HTTP;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -36,12 +39,17 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Slf4j
 public class VideoManager {
 
     @Autowired
     VideoRepository videoRepository;
 
+    @Autowired
+    private RestTemplate restTemplate;
 
+    @Value("${videorecommendation.url}")
+    private String baseUrl;
 
     public List<Video> retrieveAllVideos() {
         return videoRepository.findAll();
@@ -55,8 +63,7 @@ public class VideoManager {
 
         ObjectMapper mapper = new ObjectMapper();
         //TODO: Calling 8081 is NOT Scalable! This NEEDS to be fixed
-        List<Recommendation> recommendations = mapper.readValue(new URL("http://localhost:8081/recommendation-service/find-by-id/" + id),
-                List.class);
+        List<Recommendation> recommendations = restTemplate.getForEntity(baseUrl + "find-by-id/" + id, List.class).getBody();
         if (recommendations.size() == 0) recommendations = null;
 
         return recommendations;
